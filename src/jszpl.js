@@ -1,7 +1,7 @@
-"use strict";
+'use strict'
 
-const FontFamilyDefinition = require('./b64-fonts.js');
-FontFamilyDefinition.initialize();
+const FontFamilyDefinition = require('./b64-fonts.js')
+FontFamilyDefinition.initialize()
 
 const elements = {
   Text: require('./components/text.js'),
@@ -11,7 +11,7 @@ const elements = {
   Graphic: require('./components/graphic.js'),
   Grid: require('./components/grid.js'),
   Barcode: require('./components/barcode.js'),
-  Raw: require('./components/raw.js'),
+  Raw: require('./components/raw.js')
 }
 
 module.exports = {
@@ -48,5 +48,5 @@ module.exports = {
   Barcode: elements.Barcode,
   Raw: elements.Raw,
 
-  elements: elements,
+  elements: elements
 }

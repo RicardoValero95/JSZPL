@@ -1,9 +1,9 @@
 module.exports = {
-  A : 'A',
-  B : 'B',
-  D : 'D',
-  E : 'E',
-  F : 'F',
+  A: 'A',
+  B: 'B',
+  D: 'D',
+  E: 'E',
+  F: 'F'
   // G : 'G',
   // H : 'H',
   // 0 : '0',
@@ -15,4 +15,4 @@ module.exports = {
   // T : 'T',
   // U : 'U',
   // V : 'V'
-};
+}

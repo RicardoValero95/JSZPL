@@ -18,4 +18,4 @@ module.exports = {
   QRCode: 'QRCode',
   DataMatrix: 'DataMatrix',
   PostNet: 'PostNet'
-};
+}

@@ -1,22 +1,21 @@
-const SizeType = require('../enums/size-type.js');
+const SizeType = require('../enums/size-type.js')
 
 module.exports = class Size {
   constructor(value, sizeType) {
-    this.typeName = 'Size';
+    this.typeName = 'Size'
 
-    this.value = value || 0;
-    this.sizeType = sizeType || SizeType.Absolute;
+    this.value = value || 0
+    this.sizeType = sizeType || SizeType.Absolute
   }
 
   getValue(unitSize) {
-    if (typeof(unitSize) == 'number' && this.sizeType == SizeType.Relative)
-    {
-      return this.value * unitSize;
+    if (typeof unitSize == 'number' && this.sizeType == SizeType.Relative) {
+      return this.value * unitSize
     }
-    return this.value;
+    return this.value
   }
 
   toString() {
-    return this.value + (this.sizeType == SizeType.Relative ? '*' : '');
+    return this.value + (this.sizeType == SizeType.Relative ? '*' : '')
   }
 }

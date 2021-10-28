@@ -1,10 +1,10 @@
-const BaseContainerControl = require('./base-container-component.js');
+const BaseContainerControl = require('./base-container-component.js')
 
 module.exports = class BaseGraphicComponent extends BaseContainerControl {
   constructor() {
-    super();
+    super()
 
-    this.border = 0;
-    this.fill = false;
+    this.border = 0
+    this.fill = false
   }
 }

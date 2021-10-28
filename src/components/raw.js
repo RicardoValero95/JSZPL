@@ -1,19 +1,19 @@
-const BaseComponent = require('./base-component.js');
+const BaseComponent = require('./base-component.js')
 
 module.exports = class Raw extends BaseComponent {
   constructor() {
-    super();
+    super()
 
-    this.typeName = 'Raw';
+    this.typeName = 'Raw'
 
-    this.data = '';
+    this.data = ''
   }
 
   generateZPL(offsetLeft, offsetTop, availableWidth, availableHeight, widthUnits, heightUnits) {
     if (!this.data || this.data === '') {
-      return '';
+      return ''
     }
 
-    return this.data + '\n';
+    return this.data + '\n'
   }
 }

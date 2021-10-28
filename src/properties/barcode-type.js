@@ -1,11 +1,11 @@
 module.exports = class BarcodeType {
   constructor(type) {
-    this.typeName = 'BarcodeType';
+    this.typeName = 'BarcodeType'
 
-    this.value = type;
+    this.value = type
   }
 
   toString() {
-    return this.value;
+    return this.value
   }
 }

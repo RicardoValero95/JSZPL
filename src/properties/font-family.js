@@ -1,17 +1,17 @@
-const FontFamilyDefinition = require('../b64-fonts.js');
+const FontFamilyDefinition = require('../b64-fonts.js')
 
 module.exports = class FontFamily {
   constructor(value) {
-    this.typeName = 'FontFamily';
+    this.typeName = 'FontFamily'
 
-    this.value = value;
+    this.value = value
   }
 
   get definition() {
-    return FontFamilyDefinition[this.value];
+    return FontFamilyDefinition[this.value]
   }
 
   toString() {
-    return this.value;
+    return this.value
   }
 }

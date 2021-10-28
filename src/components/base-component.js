@@ -1,17 +1,15 @@
 module.exports = class BaseComponent {
   constructor() {
-    this.notImplemented = ['typeName'];
+    this.notImplemented = ['typeName']
   }
 
   generateZPL(offsetLeft, offsetTop, availableWidth, availableHeight, widthUnits, heightUnits) {
-    return '';
+    return ''
   }
 
   generateXML(availableWidth, availableHeight) {
-    return '';
+    return ''
   }
 
-  generateBinaryImage(binaryBase, offsetLeft, offsetTop, availableWidth, availableHeight, widthUnits, heightUnits) {
-
-  }
+  generateBinaryImage(binaryBase, offsetLeft, offsetTop, availableWidth, availableHeight, widthUnits, heightUnits) {}
 }
