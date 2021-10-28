@@ -5,7 +5,8 @@
   "main": "./src/jszpl.js",
   "scripts": {
     "test": "jest",
-    "font-packer": "node ./font-packer/font-packer.js"
+    "font-packer": "node ./font-packer/font-packer.js",
+    "format": "prettier -w src/."
   },
   "repository": {
     "type": "git",
@@ -23,8 +24,15 @@
   },
   "homepage": "https://github.com/DanieLeeuwner/JSZPL#readme",
   "devDependencies": {
-    "jest": "^27.0.4",
+    "@tsconfig/node16": "^1.0.2",
+    "@types/node": "^16.11.6",
+    "jest": "^27.3.1",
     "pngjs": "^6.0.0",
-    "webpack": "^5.38.1"
+    "prettier": "^2.4.1",
+    "ts-jest": "^27.0.7",
+    "ts-node": "^10.4.0",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.4.4",
+    "webpack": "^5.60.0"
   }
 }
