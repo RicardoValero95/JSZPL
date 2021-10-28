@@ -1,6 +1,9 @@
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Spacing'.
 const { Barcode, BarcodeType, BarcodeTypeName, Spacing } = require('../src/jszpl.js');
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'testHelper... Remove this comment to see the full error message
 const testHelpers = require('./test-helpers.js');
 
+// @ts-expect-error ts-migrate(2582) FIXME: Cannot find name 'test'. Do you need to install ty... Remove this comment to see the full error message
 test('add QR barcode to a label', () => {
   const label = testHelpers.createLabel();
 
@@ -13,11 +16,13 @@ test('add QR barcode to a label', () => {
 
   const zpl = label.generateZPL();
 
+  // @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'expect'.
   expect(zpl).toBe(`^XA
 ^FO10,10^BQ,2,8,Q,7^FDQA,Hello World!^FS
 ^XZ`);
 });
 
+// @ts-expect-error ts-migrate(2582) FIXME: Cannot find name 'test'. Do you need to install ty... Remove this comment to see the full error message
 test('add DataMatrix barcode to a label', () => {
   const label = testHelpers.createLabel();
 
@@ -30,11 +35,13 @@ test('add DataMatrix barcode to a label', () => {
 
   const zpl = label.generateZPL();
 
+  // @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'expect'.
   expect(zpl).toBe(`^XA
 ^FO10,10^BXN,10,200,,,~,1^FDHello World!^FS
 ^XZ`);
 });
 
+// @ts-expect-error ts-migrate(2582) FIXME: Cannot find name 'test'. Do you need to install ty... Remove this comment to see the full error message
 test('add EAN13 barcode to a label', () => {
   const label = testHelpers.createLabel();
 
@@ -48,11 +55,13 @@ test('add EAN13 barcode to a label', () => {
 
   const zpl = label.generateZPL();
 
+  // @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'expect'.
   expect(zpl).toBe(`^XA
 ^FO30,30^BEN,50,Y,N^FD5901234123457^FS
 ^XZ`);
 });
 
+// @ts-expect-error ts-migrate(2582) FIXME: Cannot find name 'test'. Do you need to install ty... Remove this comment to see the full error message
 test('add EAN13 barcode without an interpretation line to a label', () => {
   const label = testHelpers.createLabel();
 
@@ -67,11 +76,13 @@ test('add EAN13 barcode without an interpretation line to a label', () => {
 
   const zpl = label.generateZPL();
 
+  // @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'expect'.
   expect(zpl).toBe(`^XA
 ^FO30,30^BEN,50,N,N^FD5901234123457^FS
 ^XZ`);
 });
 
+// @ts-expect-error ts-migrate(2582) FIXME: Cannot find name 'test'. Do you need to install ty... Remove this comment to see the full error message
 test('add EAN8 barcode to a label', () => {
   const label = testHelpers.createLabel();
 
@@ -85,6 +96,7 @@ test('add EAN8 barcode to a label', () => {
 
   const zpl = label.generateZPL();
 
+  // @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'expect'.
   expect(zpl).toBe(`^XA
 ^FO30,30^B8N,50,Y,N^FD5901234123457^FS
 ^XZ`);
