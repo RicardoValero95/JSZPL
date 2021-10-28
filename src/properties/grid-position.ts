@@ -1,5 +1,8 @@
 module.exports = class GridPosition {
-  constructor(column, row) {
+  column: any;
+  row: any;
+  typeName: any;
+  constructor(column: any, row: any) {
     this.typeName = 'GridPosition'
 
     this.column = column || 0

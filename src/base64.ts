@@ -1,6 +1,6 @@
 var base64chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
 
-function encode(blocks) {
+function encode(blocks: any) {
   var base64 = ''
 
   var zeroCount = (6 - (blocks.length % 6)) % 6
@@ -24,7 +24,7 @@ function encode(blocks) {
   return base64
 }
 
-function decode(base64) {
+function decode(base64: any) {
   var blocks = []
 
   base64 = base64.replace(/=/g, '')

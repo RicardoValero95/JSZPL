@@ -1,5 +1,7 @@
 module.exports = class PrintDensity {
-  constructor(value) {
+  typeName: any;
+  value: any;
+  constructor(value: any) {
     this.typeName = 'PrintDensity'
 
     this.value = value

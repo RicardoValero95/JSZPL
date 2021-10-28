@@ -1,3 +1,4 @@
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'BaseGraphi... Remove this comment to see the full error message
 const BaseGraphicComponent = require('./base-graphic-component.js')
 
 module.exports = class Circle extends BaseGraphicComponent {
@@ -7,7 +8,7 @@ module.exports = class Circle extends BaseGraphicComponent {
     this.typeName = 'Circle'
   }
 
-  generateZPL(offsetLeft, offsetTop, availableWidth, availableHeight, widthUnits, heightUnits) {
+  generateZPL(offsetLeft: any, offsetTop: any, availableWidth: any, availableHeight: any, widthUnits: any, heightUnits: any) {
     const position = this.getPosition(offsetLeft, offsetTop, availableWidth, availableHeight, widthUnits, heightUnits)
 
     let zpl = '^FO' + Math.round(position.left) + ',' + Math.round(position.top)
@@ -39,7 +40,7 @@ module.exports = class Circle extends BaseGraphicComponent {
     return zpl
   }
 
-  generateBinaryImage(binaryBase, offsetLeft, offsetTop, availableWidth, availableHeight, widthUnits, heightUnits) {
+  generateBinaryImage(binaryBase: any, offsetLeft: any, offsetTop: any, availableWidth: any, availableHeight: any, widthUnits: any, heightUnits: any) {
     var position = this.getPosition(offsetLeft, offsetTop, availableWidth, availableHeight, widthUnits, heightUnits)
 
     var yCenter = position.height / 2
@@ -62,6 +63,7 @@ module.exports = class Circle extends BaseGraphicComponent {
           value =
             Math.pow(x - xCenter, 2) / Math.pow(widthHalf, 2) + Math.pow(y - yCenter, 2) / Math.pow(heightHalf, 2) <= 1
           if (this.fill == false) {
+            // @ts-expect-error ts-migrate(2447) FIXME: The '&=' operator is not allowed for boolean types... Remove this comment to see the full error message
             value &=
               Math.pow(x - xCenter, 2) / Math.pow(widthHalfBorder, 2) +
                 Math.pow(y - yCenter, 2) / Math.pow(heightHalfBorder, 2) >=

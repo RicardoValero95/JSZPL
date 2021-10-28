@@ -1,7 +1,12 @@
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'BaseVisual... Remove this comment to see the full error message
 const BaseVisualComponent = require('./base-visual-component.js')
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'FontFamily... Remove this comment to see the full error message
 const FontFamily = require('../properties/font-family.js')
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Alignment'... Remove this comment to see the full error message
 const Alignment = require('../properties/alignment.js')
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'FontFamily... Remove this comment to see the full error message
 const FontFamilyName = require('../enums/font-family-name.js')
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'AlignmentV... Remove this comment to see the full error message
 const AlignmentValue = require('../enums/alignment-value.js')
 
 module.exports = class Text extends BaseVisualComponent {
@@ -34,7 +39,7 @@ module.exports = class Text extends BaseVisualComponent {
     const textLines = this.getTextLines()
 
     for (let textLine of textLines) {
-      const currentLineCharacters = []
+      const currentLineCharacters: any = []
       lineCharacters.push(currentLineCharacters)
 
       for (let character of textLine) {
@@ -73,7 +78,7 @@ module.exports = class Text extends BaseVisualComponent {
     }
   }
 
-  generateZPL(offsetLeft, offsetTop, availableWidth, availableHeight, widthUnits, heightUnits) {
+  generateZPL(offsetLeft: any, offsetTop: any, availableWidth: any, availableHeight: any, widthUnits: any, heightUnits: any) {
     var position = this.getPosition(offsetLeft, offsetTop, availableWidth, availableHeight, widthUnits, heightUnits)
 
     var size = this.calculateSize()
@@ -131,7 +136,7 @@ module.exports = class Text extends BaseVisualComponent {
     return zpl
   }
 
-  generateBinaryImage(binaryBase, offsetLeft, offsetTop, availableWidth, availableHeight, widthUnits, heightUnits) {
+  generateBinaryImage(binaryBase: any, offsetLeft: any, offsetTop: any, availableWidth: any, availableHeight: any, widthUnits: any, heightUnits: any) {
     const position = this.getPosition(offsetLeft, offsetTop, availableWidth, availableHeight, widthUnits, heightUnits)
 
     const characters = this.characterMap()

@@ -1,7 +1,7 @@
 module.exports = class ImageResizer {
   constructor() {}
 
-  resize(targetWidth, targetHeight, width, height, data) {
+  resize(targetWidth: any, targetHeight: any, width: any, height: any, data: any) {
     var result = []
 
     var dx = width / targetWidth

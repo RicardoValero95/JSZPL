@@ -1,3 +1,4 @@
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'BaseGraphi... Remove this comment to see the full error message
 const BaseGraphicComponent = require('./base-graphic-component.js')
 
 module.exports = class Box extends BaseGraphicComponent {
@@ -9,7 +10,7 @@ module.exports = class Box extends BaseGraphicComponent {
     this.cornerRadius = 0
   }
 
-  generateZPL(offsetLeft, offsetTop, availableWidth, availableHeight, widthUnits, heightUnits) {
+  generateZPL(offsetLeft: any, offsetTop: any, availableWidth: any, availableHeight: any, widthUnits: any, heightUnits: any) {
     var position = this.getPosition(offsetLeft, offsetTop, availableWidth, availableHeight, widthUnits, heightUnits)
 
     var zpl = '^FO' + Math.round(position.left) + ',' + Math.round(position.top)
@@ -39,7 +40,7 @@ module.exports = class Box extends BaseGraphicComponent {
     return zpl
   }
 
-  generateBinaryImage(binaryBase, offsetLeft, offsetTop, availableWidth, availableHeight, widthUnits, heightUnits) {
+  generateBinaryImage(binaryBase: any, offsetLeft: any, offsetTop: any, availableWidth: any, availableHeight: any, widthUnits: any, heightUnits: any) {
     var position = this.getPosition(offsetLeft, offsetTop, availableWidth, availableHeight, widthUnits, heightUnits)
 
     var borderSize = this.border || 0

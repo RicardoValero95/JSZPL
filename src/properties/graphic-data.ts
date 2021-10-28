@@ -1,5 +1,9 @@
 module.exports = class GraphicData {
-  constructor(width, height, data) {
+  data: any;
+  height: any;
+  typeName: any;
+  width: any;
+  constructor(width: any, height: any, data: any) {
     this.typeName = 'GraphicData'
 
     this.data = data || []

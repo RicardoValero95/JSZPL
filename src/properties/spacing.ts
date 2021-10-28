@@ -1,5 +1,10 @@
 module.exports = class Spacing {
-  constructor(left, top, right, bottom) {
+  bottom: any;
+  left: any;
+  right: any;
+  top: any;
+  typeName: any;
+  constructor(left: any, top: any, right: any, bottom: any) {
     this.typeName = 'Spacing'
 
     this.left = left || 0

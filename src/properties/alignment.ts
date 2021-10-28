@@ -1,5 +1,7 @@
 module.exports = class Alignment {
-  constructor(value) {
+  typeName: any;
+  value: any;
+  constructor(value: any) {
     this.typeName = 'Alignment'
 
     this.value = value

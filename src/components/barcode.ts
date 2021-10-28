@@ -1,6 +1,8 @@
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'BaseVisual... Remove this comment to see the full error message
 const BaseVisualComponent = require('./base-visual-component.js')
 const BarcodeType = require('../properties/barcode-type.js')
 const BarcodeTypeName = require('../enums/barcode-type-name.js')
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'LabelTools... Remove this comment to see the full error message
 const LabelTools = require('../helpers/label-tools.js')
 
 module.exports = class Barcode extends BaseVisualComponent {
@@ -20,7 +22,7 @@ module.exports = class Barcode extends BaseVisualComponent {
     this.notImplemented = ['typeName', 'invert']
   }
 
-  generateZPL(offsetLeft, offsetTop, availableWidth, availableHeight, widthUnits, heightUnits) {
+  generateZPL(offsetLeft: any, offsetTop: any, availableWidth: any, availableHeight: any, widthUnits: any, heightUnits: any) {
     var position = this.getPosition(offsetLeft, offsetTop, availableWidth, availableHeight, widthUnits, heightUnits)
 
     var zpl = ''
@@ -151,7 +153,7 @@ module.exports = class Barcode extends BaseVisualComponent {
     return zpl
   }
 
-  generateBinaryImage(binaryBase, offsetLeft, offsetTop, availableWidth, availableHeight, widthUnits, heightUnits) {
+  generateBinaryImage(binaryBase: any, offsetLeft: any, offsetTop: any, availableWidth: any, availableHeight: any, widthUnits: any, heightUnits: any) {
     var position = this.getPosition(offsetLeft, offsetTop, availableWidth, availableHeight, widthUnits, heightUnits)
 
     var barcodeData = LabelTools.BarcodeRenderer.render(position.width, position.height, this.type, this.data)

@@ -1,5 +1,7 @@
 module.exports = class BarcodeType {
-  constructor(type) {
+  typeName: any;
+  value: any;
+  constructor(type: any) {
     this.typeName = 'BarcodeType'
 
     this.value = type

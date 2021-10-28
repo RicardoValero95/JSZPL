@@ -1,7 +1,11 @@
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'BaseVisual... Remove this comment to see the full error message
 const BaseVisualComponent = require('./base-visual-component.js')
 const GraphicData = require('../properties/graphic-data.js')
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'ImageProce... Remove this comment to see the full error message
 const { ImageProcessor } = require('../helpers/label-tools.js')
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Box'.
 const Box = require('./box.js')
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'LabelTools... Remove this comment to see the full error message
 const LabelTools = require('../helpers/label-tools.js')
 const ZPLImageTools = require('../helpers/zpl-image-tools.js')
 
@@ -24,13 +28,13 @@ module.exports = class Graphic extends BaseVisualComponent {
     return container
   }
 
-  extractImageData(cb) {
+  extractImageData(cb: any) {
     var processor = LabelTools.ImageProcessor || new ImageProcessor()
     var imageData = processor.processImage(this.data)
     cb(imageData)
   }
 
-  generateZPL(offsetLeft, offsetTop, availableWidth, availableHeight, widthUnits, heightUnits) {
+  generateZPL(offsetLeft: any, offsetTop: any, availableWidth: any, availableHeight: any, widthUnits: any, heightUnits: any) {
     var container = this.generateContainer()
     var zpl = container.generateZPL(offsetLeft, offsetTop, availableWidth, availableHeight, widthUnits, heightUnits)
 
@@ -59,7 +63,7 @@ module.exports = class Graphic extends BaseVisualComponent {
     return zpl
   }
 
-  generateBinaryImage(binaryBase, offsetLeft, offsetTop, availableWidth, availableHeight, widthUnits, heightUnits) {
+  generateBinaryImage(binaryBase: any, offsetLeft: any, offsetTop: any, availableWidth: any, availableHeight: any, widthUnits: any, heightUnits: any) {
     var container = this.generateContainer()
     container.generateBinaryImage(
       binaryBase,

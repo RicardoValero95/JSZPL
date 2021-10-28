@@ -1,3 +1,4 @@
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'BaseContai... Remove this comment to see the full error message
 const BaseContainerComponent = require('./base-container-component.js')
 const PrintDensity = require('../properties/print-density.js')
 const PrintDensityName = require('../enums/print-density-name.js')
@@ -28,7 +29,7 @@ module.exports = class Label extends BaseContainerComponent {
     return zpl
   }
 
-  generateBinaryImage(binaryBase) {
+  generateBinaryImage(binaryBase: any) {
     var width = this.getSize(this.width) * this.printDensity.value
     var height = this.getSize(this.height) * this.printDensity.value
 

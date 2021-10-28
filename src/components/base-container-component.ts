@@ -1,4 +1,6 @@
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'BaseVisual... Remove this comment to see the full error message
 const BaseVisualComponent = require('./base-visual-component.js')
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Spacing'.
 const Spacing = require('../properties/spacing.js')
 
 module.exports = class BaseContainerComponent extends BaseVisualComponent {
@@ -10,7 +12,7 @@ module.exports = class BaseContainerComponent extends BaseVisualComponent {
     this.content = []
   }
 
-  calculateSizing(availableWidth, availableHeight, widthUnits, heightUnits) {
+  calculateSizing(availableWidth: any, availableHeight: any, widthUnits: any, heightUnits: any) {
     var units = this.calculateUnits()
 
     var spacingLeft = this.margin.left + this.padding.left
@@ -22,7 +24,9 @@ module.exports = class BaseContainerComponent extends BaseVisualComponent {
     var width = availableWidth - spacingHorizontal - (this.border || 0) * 2
     var height = availableHeight - spacingVertical - (this.border || 0) * 2
 
+    // @ts-expect-error ts-migrate(2403) FIXME: Subsequent variable declarations must have the sam... Remove this comment to see the full error message
     var widthUnits = (width - units.absolute.width) / (units.relative.width || 1)
+    // @ts-expect-error ts-migrate(2403) FIXME: Subsequent variable declarations must have the sam... Remove this comment to see the full error message
     var heightUnits = (height - units.absolute.height) / (units.relative.height || 1)
 
     return {
@@ -35,7 +39,7 @@ module.exports = class BaseContainerComponent extends BaseVisualComponent {
     }
   }
 
-  generateZPL(offsetLeft, offsetTop, availableWidth, availableHeight, widthUnits, heightUnits) {
+  generateZPL(offsetLeft: any, offsetTop: any, availableWidth: any, availableHeight: any, widthUnits: any, heightUnits: any) {
     var sizing = this.calculateSizing(availableWidth, availableHeight, widthUnits, heightUnits)
 
     var zpl = ''
@@ -57,7 +61,7 @@ module.exports = class BaseContainerComponent extends BaseVisualComponent {
     return zpl
   }
 
-  generateBinaryImage(binaryBase, offsetLeft, offsetTop, availableWidth, availableHeight, widthUnits, heightUnits) {
+  generateBinaryImage(binaryBase: any, offsetLeft: any, offsetTop: any, availableWidth: any, availableHeight: any, widthUnits: any, heightUnits: any) {
     var sizing = this.calculateSizing(availableWidth, availableHeight, widthUnits, heightUnits)
 
     for (var c_id in this.content) {

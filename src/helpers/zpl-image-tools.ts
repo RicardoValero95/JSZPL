@@ -1,5 +1,5 @@
 module.exports = {
-  generateHexAscii: (width, height, imageData) => {
+  generateHexAscii: (width: any, height: any, imageData: any) => {
     let index = 0
     let bitIndex = 0
     let output = ''
@@ -30,7 +30,7 @@ module.exports = {
     return output
   },
 
-  encodeHexAscii: (data) => {
+  encodeHexAscii: (data: any) => {
     const mapCode = {
       1: 'G',
       2: 'H',
@@ -96,10 +96,12 @@ module.exports = {
           currentLine += '!'
         } else if (counter > 20) {
           const value = Math.floor(counter / 20) * 20
+          // @ts-expect-error ts-migrate(7053) FIXME: Element implicitly has an 'any' type because expre... Remove this comment to see the full error message
           currentLine += mapCode[value]
 
           const counterMod = counter % 20
           if (counterMod != 0) {
+            // @ts-expect-error ts-migrate(7053) FIXME: Element implicitly has an 'any' type because expre... Remove this comment to see the full error message
             currentLine += mapCode[counterMod]
           }
 
@@ -122,13 +124,16 @@ module.exports = {
       } else {
         if (counter > 20) {
           const value = Math.floor(counter / 20) * 20
+          // @ts-expect-error ts-migrate(7053) FIXME: Element implicitly has an 'any' type because expre... Remove this comment to see the full error message
           currentLine += mapCode[value]
 
           const counterMod = counter % 20
           if (counterMod != 0) {
+            // @ts-expect-error ts-migrate(7053) FIXME: Element implicitly has an 'any' type because expre... Remove this comment to see the full error message
             currentLine += mapCode[counterMod]
           }
         } else {
+          // @ts-expect-error ts-migrate(7053) FIXME: Element implicitly has an 'any' type because expre... Remove this comment to see the full error message
           currentLine += mapCode[counter]
         }
         currentLine += currentChar

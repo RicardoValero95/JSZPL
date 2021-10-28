@@ -3,19 +3,29 @@ const base64 = require('./base64.js')
 function initialize() {
   for (var f_id in self) {
     var character = self[f_id]
+    // @ts-expect-error ts-migrate(2339) FIXME: Property 'spacing' does not exist on type 'Window'... Remove this comment to see the full error message
     if (character.spacing == undefined) {
       continue
     }
 
+    // @ts-expect-error ts-migrate(2339) FIXME: Property 'characters' does not exist on type 'Wind... Remove this comment to see the full error message
     character.characters = {}
+    // @ts-expect-error ts-migrate(2339) FIXME: Property 'base64' does not exist on type 'Window'.
     for (let c_id in character.base64) {
+      // @ts-expect-error ts-migrate(2339) FIXME: Property 'base64' does not exist on type 'Window'.
       const blocks = base64.decode(character.base64[c_id])
+      // @ts-expect-error ts-migrate(2339) FIXME: Property 'characters' does not exist on type 'Wind... Remove this comment to see the full error message
       character.characters[c_id] = []
 
+      // @ts-expect-error ts-migrate(2339) FIXME: Property 'size' does not exist on type 'Window'.
       for (let y = 0; y < character.size.height; y++) {
+        // @ts-expect-error ts-migrate(2339) FIXME: Property 'characters' does not exist on type 'Wind... Remove this comment to see the full error message
         character.characters[c_id][y] = []
+        // @ts-expect-error ts-migrate(2339) FIXME: Property 'size' does not exist on type 'Window'.
         for (let x = 0; x < character.size.width; x++) {
+          // @ts-expect-error ts-migrate(2339) FIXME: Property 'size' does not exist on type 'Window'.
           const index = y * character.size.width + x
+          // @ts-expect-error ts-migrate(2339) FIXME: Property 'characters' does not exist on type 'Wind... Remove this comment to see the full error message
           character.characters[c_id][y].push(blocks[index])
         }
       }
@@ -23,6 +33,7 @@ function initialize() {
   }
 }
 
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'self'.
 const self = (module.exports = {
   initialize: initialize,
   A: {

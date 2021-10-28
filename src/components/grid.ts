@@ -1,7 +1,12 @@
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'BaseContai... Remove this comment to see the full error message
 const BaseContainerComponent = require('./base-container-component.js')
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Box'.
 const Box = require('./box.js')
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Size'.
 const Size = require('../properties/size.js')
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Spacing'.
 const Spacing = require('../properties/spacing.js')
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'SizeType'.
 const SizeType = require('../enums/size-type.js')
 
 module.exports = class Grid extends BaseContainerComponent {
@@ -17,7 +22,7 @@ module.exports = class Grid extends BaseContainerComponent {
     this.rowSpacing = 0
   }
 
-  calculateSizing(availableWidth, availableHeight, widthUnits, heightUnits) {
+  calculateSizing(availableWidth: any, availableHeight: any, widthUnits: any, heightUnits: any) {
     var units = this.calculateUnits()
 
     var spacingLeft = this.margin.left
@@ -29,7 +34,9 @@ module.exports = class Grid extends BaseContainerComponent {
     var width = availableWidth - spacingHorizontal
     var height = availableHeight - spacingVertical
 
+    // @ts-expect-error ts-migrate(2403) FIXME: Subsequent variable declarations must have the sam... Remove this comment to see the full error message
     var widthUnits = (width - units.absolute.width) / (units.relative.width || 1)
+    // @ts-expect-error ts-migrate(2403) FIXME: Subsequent variable declarations must have the sam... Remove this comment to see the full error message
     var heightUnits = (height - units.absolute.height) / (units.relative.height || 1)
 
     return {
@@ -42,7 +49,7 @@ module.exports = class Grid extends BaseContainerComponent {
     }
   }
 
-  generateChildren(availableWidth, availableHeight) {
+  generateChildren(availableWidth: any, availableHeight: any) {
     const columnDefinitions = this.columns
     if (columnDefinitions.length == 0) {
       columnDefinitions.push(new Size(1, SizeType.Relative))
@@ -122,6 +129,7 @@ module.exports = class Grid extends BaseContainerComponent {
 
       for (let x = 0; x < this.columns.length; x++) {
         const cell = new Box()
+        // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'any' is not assignable to parame... Remove this comment to see the full error message
         content[y].push(cell)
         contentCells.push(cell)
 
@@ -151,6 +159,7 @@ module.exports = class Grid extends BaseContainerComponent {
       if (element.grid.row < 0 || element.grid.row >= rowDefinitions.length) continue
       if (element.grid.column < 0 || element.grid.column >= columnDefinitions.length) continue
 
+      // @ts-expect-error ts-migrate(2339) FIXME: Property 'content' does not exist on type 'never'.
       content[element.grid.row][element.grid.column].content.push(element)
     }
 
@@ -166,7 +175,7 @@ module.exports = class Grid extends BaseContainerComponent {
     return contentBox
   }
 
-  generateZPL(offsetLeft, offsetTop, availableWidth, availableHeight, widthUnits, heightUnits) {
+  generateZPL(offsetLeft: any, offsetTop: any, availableWidth: any, availableHeight: any, widthUnits: any, heightUnits: any) {
     var position = this.getPosition(offsetLeft, offsetTop, availableWidth, availableHeight, widthUnits, heightUnits)
     var contentBox = this.generateChildren(position.width, position.height)
     var sizing = this.calculateSizing(availableWidth, availableHeight, widthUnits, heightUnits)
@@ -181,7 +190,7 @@ module.exports = class Grid extends BaseContainerComponent {
     )
   }
 
-  generateBinaryImage(binaryBase, offsetLeft, offsetTop, availableWidth, availableHeight, widthUnits, heightUnits) {
+  generateBinaryImage(binaryBase: any, offsetLeft: any, offsetTop: any, availableWidth: any, availableHeight: any, widthUnits: any, heightUnits: any) {
     var position = this.getPosition(offsetLeft, offsetTop, availableWidth, availableHeight, widthUnits, heightUnits)
     var contentBox = this.generateChildren(position.width, position.height)
     var sizing = this.calculateSizing(availableWidth, availableHeight, widthUnits, heightUnits)

@@ -1,7 +1,11 @@
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'BaseCompon... Remove this comment to see the full error message
 const BaseComponent = require('./base-component.js')
 const GridPosition = require('../properties/grid-position.js')
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Size'.
 const Size = require('../properties/size.js')
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Spacing'.
 const Spacing = require('../properties/spacing.js')
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'SizeType'.
 const SizeType = require('../enums/size-type.js')
 
 module.exports = class BaseVisualComponent extends BaseComponent {
@@ -22,7 +26,7 @@ module.exports = class BaseVisualComponent extends BaseComponent {
     this.margin = new Spacing()
   }
 
-  getPosition(offsetLeft, offsetTop, availableWidth, availableHeight, widthUnits, heightUnits) {
+  getPosition(offsetLeft: any, offsetTop: any, availableWidth: any, availableHeight: any, widthUnits: any, heightUnits: any) {
     // gets start position and size of content
     var left = this.getSize(this.left, widthUnits) + this.margin.left
     var top = this.getSize(this.top, heightUnits) + this.margin.top
@@ -45,7 +49,7 @@ module.exports = class BaseVisualComponent extends BaseComponent {
     }
   }
 
-  getSize(prop, unitSize) {
+  getSize(prop: any, unitSize: any) {
     if (typeof prop == 'number') {
       return prop
     } else {

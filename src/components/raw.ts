@@ -1,3 +1,4 @@
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'BaseCompon... Remove this comment to see the full error message
 const BaseComponent = require('./base-component.js')
 
 module.exports = class Raw extends BaseComponent {
@@ -9,7 +10,7 @@ module.exports = class Raw extends BaseComponent {
     this.data = ''
   }
 
-  generateZPL(offsetLeft, offsetTop, availableWidth, availableHeight, widthUnits, heightUnits) {
+  generateZPL(offsetLeft: any, offsetTop: any, availableWidth: any, availableHeight: any, widthUnits: any, heightUnits: any) {
     if (!this.data || this.data === '') {
       return ''
     }
