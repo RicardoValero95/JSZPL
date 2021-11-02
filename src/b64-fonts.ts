@@ -2,7 +2,9 @@ import base64 from './base64'
 import { Base64Char } from './enums/base64-char'
 import { FontFamilyName } from './enums/font-family-name'
 
-type FontFamilyDefinition = {
+// TODO: What does this file do?
+
+type FontFamilyDefinitionShape = {
   name: string
   spacing: {
     right: number
@@ -17,7 +19,7 @@ type FontFamilyDefinition = {
   base64: { [char in Base64Char]: string }
 }
 
-export const definitions: { [name in FontFamilyName]: FontFamilyDefinition } = {
+export const definitions: { [name in FontFamilyName]: FontFamilyDefinitionShape } = {
   // initialize: initialize,
   A: {
     name: 'FONT_A',
@@ -536,29 +538,49 @@ export const definitions: { [name in FontFamilyName]: FontFamilyDefinition } = {
   }
 }
 
-type FFDwithCharacters = FontFamilyDefinition & {
+type FFDwithCharacters = FontFamilyDefinitionShape & {
   characters: any
 }
+
+// [map function for objects (instead of arrays)](https://stackoverflow.com/questions/14810506/map-function-for-objects-instead-of-arrays)
+const objectMap = (obj: Object, fn: Function) =>
+  Object.fromEntries(Object.entries(obj).map(([k, v], i) => [k, fn(v, k, i)]))
+
 function initialize() {
+  return objectMap(definitions, (definition: FFDwithCharacters) => {
+    definition.characters = {}
+    for (const characterId in definition.base64) {
+      const blocks = base64.decode(definition.base64[characterId])
+      definition.characters[characterId] = []
+      for (let y = 0; y < definition.size.height; y++) {
+        definition.characters[characterId][y] = []
+        for (let x = 0; x < definition.size.width; x++) {
+          const index = y * definition.size.width + x
+          definition.characters[characterId][y].push(blocks[index])
+        }
+      }
+    }
+  })
   for (let fontId in definitions) {
-    let character = definitions[fontId] as FFDwithCharacters
-    if (character.spacing == undefined) {
+    let definition = definitions[fontId] as FFDwithCharacters
+    if (definition.spacing == undefined) {
       continue
     }
-    for (const characterId in character.base64) {
-      const blocks = base64.decode(character.base64[characterId])
-      character.characters[characterId] = []
-      for (let y = 0; y < character.size.height; y++) {
-        character.characters[characterId][y] = []
-        for (let x = 0; x < character.size.width; x++) {
-          const index = y * character.size.width + x
-          character.characters[characterId][y].push(blocks[index])
+    definition.characters = {}
+    for (const characterId in definition.base64) {
+      const blocks = base64.decode(definition.base64[characterId])
+      definition.characters[characterId] = []
+      for (let y = 0; y < definition.size.height; y++) {
+        definition.characters[characterId][y] = []
+        for (let x = 0; x < definition.size.width; x++) {
+          const index = y * definition.size.width + x
+          definition.characters[characterId][y].push(blocks[index])
         }
       }
     }
   }
 }
 
-// [map function for objects (instead of arrays)](https://stackoverflow.com/questions/14810506/map-function-for-objects-instead-of-arrays)
-const objectMap = (obj: Object, fn: Function) =>
-  Object.fromEntries(Object.entries(obj).map(([k, v], i) => [k, fn(v, k, i)]))
+export const FontFamilyDefinition: {
+  [k: string]: FFDwithCharacters
+} = initialize()

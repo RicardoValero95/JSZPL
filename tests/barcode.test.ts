@@ -64,7 +64,7 @@ test('add EAN13 barcode without an interpretation line to a label', () => {
   barcode.data = '5901234123457'
   barcode.width = 200
   barcode.height = 50
-  barcode.interpretationLine = false
+  barcode.interpretationLine = 'N'
   barcode.margin = new Spacing(20)
   barcode.type = new BarcodeType(BarcodeTypeName.EAN13)
 

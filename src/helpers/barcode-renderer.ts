@@ -6,7 +6,7 @@ import { Alignment } from '../properties/alignment'
 import { FontFamily } from '../properties/font-family'
 export class BarcodeRenderer {
   constructor() {}
-  render(width: any, height: any, type: any, data: any[]) {
+  render(width: any, height: any, type: any, data: any) {
     var box = new Box()
     box.width = width
     box.height = height
