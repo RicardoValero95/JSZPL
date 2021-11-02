@@ -25,6 +25,7 @@
   "homepage": "https://github.com/DanieLeeuwner/JSZPL#readme",
   "devDependencies": {
     "@tsconfig/node16": "^1.0.2",
+    "@types/jest": "^27.0.2",
     "@types/node": "^16.11.6",
     "jest": "^27.3.1",
     "pngjs": "^6.0.0",

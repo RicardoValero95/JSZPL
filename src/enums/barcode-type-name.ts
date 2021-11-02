@@ -1,4 +1,5 @@
-module.exports = {
+import { Values } from '.'
+export const BarcodeTypeName = {
   Code11: 'Code11',
   Interleaved25: 'Interleaved25',
   Code39: 'Code39',
@@ -18,4 +19,5 @@ module.exports = {
   QRCode: 'QRCode',
   DataMatrix: 'DataMatrix',
   PostNet: 'PostNet'
-}
+} as const
+export type BarcodeTypeName = Values<typeof BarcodeTypeName>

@@ -1,45 +1,36 @@
-'use strict'
-
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'FontFamily... Remove this comment to see the full error message
-const FontFamilyDefinition = require('./b64-fonts.js')
+import { FontFamilyDefinition } from './b64-fonts'
 FontFamilyDefinition.initialize()
-
 const elements = {
-  Text: require('./components/text.js'),
-  Box: require('./components/box.js'),
-  Line: require('./components/line.js'),
-  Circle: require('./components/circle.js'),
-  Graphic: require('./components/graphic.js'),
-  Grid: require('./components/grid.js'),
-  Barcode: require('./components/barcode.js'),
-  Raw: require('./components/raw.js')
+  Text: require('./components/text'),
+  Box: require('./components/box'),
+  Line: require('./components/line'),
+  Circle: require('./components/circle'),
+  Graphic: require('./components/graphic'),
+  Grid: require('./components/grid'),
+  Barcode: require('./components/barcode'),
+  Raw: require('./components/raw')
 }
-
 module.exports = {
-  SizeType: require('./enums/size-type.js'),
-  Rotation: require('./enums/rotation.js'),
-  PrintDensityName: require('./enums/print-density-name.js'),
-  FontFamilyName: require('./enums/font-family-name.js'),
-  BarcodeTypeName: require('./enums/barcode-type-name.js'),
-  AlignmentValue: require('./enums/alignment-value.js'),
-
+  SizeType: require('./enums/size-type'),
+  Rotation: require('./enums/rotation'),
+  PrintDensityName: require('./enums/print-density-name'),
+  FontFamilyName: require('./enums/font-family-name'),
+  BarcodeTypeName: require('./enums/barcode-type-name'),
+  AlignmentValue: require('./enums/alignment-value'),
   FontFamilyDefinition: FontFamilyDefinition,
-
-  LabelTools: require('./helpers/label-tools.js'),
-  ImageProcessor: require('./helpers/image-processor.js'),
-  ImageResizer: require('./helpers/image-resizer.js'),
-  BarcodeRenderer: require('./helpers/barcode-renderer.js'),
-
-  Size: require('./properties/size.js'),
-  Spacing: require('./properties/spacing.js'),
-  GridPosition: require('./properties/grid-position.js'),
-  FontFamily: require('./properties/font-family.js'),
-  Alignment: require('./properties/alignment.js'),
-  PrintDensity: require('./properties/print-density.js'),
-  GraphicData: require('./properties/graphic-data.js'),
-  BarcodeType: require('./properties/barcode-type.js'),
-
-  Label: require('./components/label.js'),
+  LabelTools: require('./helpers/label-tools'),
+  ImageProcessor: require('./helpers/image-processor'),
+  ImageResizer: require('./helpers/image-resizer'),
+  BarcodeRenderer: require('./helpers/barcode-renderer'),
+  Size: require('./properties/size'),
+  Spacing: require('./properties/spacing'),
+  GridPosition: require('./properties/grid-position'),
+  FontFamily: require('./properties/font-family'),
+  Alignment: require('./properties/alignment'),
+  PrintDensity: require('./properties/print-density'),
+  GraphicData: require('./properties/graphic-data'),
+  BarcodeType: require('./properties/barcode-type'),
+  Label: require('./components/label'),
   Text: elements.Text,
   Grid: elements.Grid,
   Box: elements.Box,
@@ -48,6 +39,5 @@ module.exports = {
   Graphic: elements.Graphic,
   Barcode: elements.Barcode,
   Raw: elements.Raw,
-
   elements: elements
 }

@@ -1,16 +1,13 @@
-module.exports = {
+export = {
   generateHexAscii: (width: any, height: any, imageData: any) => {
     let index = 0
     let bitIndex = 0
     let output = ''
-
     let currentValue = 0
-
     for (let y = 0; y < height; y++) {
       for (let x = 0; x < width; x++) {
         let value = imageData[index]
         currentValue += value << (7 - bitIndex)
-
         if (bitIndex == 7 || x == width - 1) {
           let valueString = currentValue.toString(16).toUpperCase()
           if (currentValue < 16) {
@@ -20,16 +17,13 @@ module.exports = {
           currentValue = 0
           bitIndex = -1
         }
-
         index++
         bitIndex++
       }
       output += '\n'
     }
-
     return output
   },
-
   encodeHexAscii: (data: any) => {
     const mapCode = {
       1: 'G',
@@ -72,15 +66,12 @@ module.exports = {
       380: 'y',
       400: 'z'
     }
-
     let outputCode = ''
     let currentLine = ''
     let previousLine = ''
-
     let newSection = true
     let currentChar = undefined
     let counter = 1
-
     for (let i = 0; i < data.length; i++) {
       if (newSection) {
         currentChar = data[i]
@@ -88,7 +79,6 @@ module.exports = {
         newSection = false
         continue
       }
-
       if (data[i] == '\n') {
         if (currentChar == '0') {
           currentLine += ','
@@ -98,16 +88,13 @@ module.exports = {
           const value = Math.floor(counter / 20) * 20
           // @ts-expect-error ts-migrate(7053) FIXME: Element implicitly has an 'any' type because expre... Remove this comment to see the full error message
           currentLine += mapCode[value]
-
           const counterMod = counter % 20
           if (counterMod != 0) {
             // @ts-expect-error ts-migrate(7053) FIXME: Element implicitly has an 'any' type because expre... Remove this comment to see the full error message
             currentLine += mapCode[counterMod]
           }
-
           currentLine += currentChar
         }
-
         newSection = true
         if (currentLine == previousLine) {
           outputCode += ':'
@@ -118,7 +105,6 @@ module.exports = {
         currentLine = ''
         continue
       }
-
       if (currentChar == data[i]) {
         counter++
       } else {
@@ -126,7 +112,6 @@ module.exports = {
           const value = Math.floor(counter / 20) * 20
           // @ts-expect-error ts-migrate(7053) FIXME: Element implicitly has an 'any' type because expre... Remove this comment to see the full error message
           currentLine += mapCode[value]
-
           const counterMod = counter % 20
           if (counterMod != 0) {
             // @ts-expect-error ts-migrate(7053) FIXME: Element implicitly has an 'any' type because expre... Remove this comment to see the full error message

@@ -1,43 +1,33 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Text'.
-const { Text, FontFamilyName, FontFamily, Alignment, AlignmentValue } = require('../src/jszpl.js');
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'testHelper... Remove this comment to see the full error message
-const testHelpers = require('./test-helpers.js');
+import { Text, FontFamilyName, FontFamily, Alignment, AlignmentValue } from '../src/jszpl'
+import testHelpers from './test-helpers'
 
-// @ts-expect-error ts-migrate(2582) FIXME: Cannot find name 'test'. Do you need to install ty... Remove this comment to see the full error message
 test('add text to a label', () => {
-  const label = testHelpers.createLabel();
+  const label = testHelpers.createLabel()
 
-  const text = new Text();
-  label.content.push(text);
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'fontFamily' does not exist on type 'Text... Remove this comment to see the full error message
-  text.fontFamily = new FontFamily(FontFamilyName.D);
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'text' does not exist on type 'Text'.
-  text.text = 'Hello World!';
+  const text = new Text()
+  label.content.push(text)
+  text.fontFamily = new FontFamily(FontFamilyName.D)
+  text.text = 'Hello World!'
 
-  const zpl = label.generateZPL();
+  const zpl = label.generateZPL()
 
-  // @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'expect'.
   expect(zpl).toBe(`^XA
 ^FO10,10^AD,,,
 ^FB780,1,0,L,0
 ^FDHello World!^FS
-^XZ`);
-});
+^XZ`)
+})
 
-// @ts-expect-error ts-migrate(2582) FIXME: Cannot find name 'test'. Do you need to install ty... Remove this comment to see the full error message
 test('add multiline text to a label', () => {
-  const label = testHelpers.createLabel();
+  const label = testHelpers.createLabel()
 
-  const text = new Text();
-  label.content.push(text);
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'fontFamily' does not exist on type 'Text... Remove this comment to see the full error message
-  text.fontFamily = new FontFamily(FontFamilyName.D);
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'text' does not exist on type 'Text'.
-  text.text = 'Hello\n World!\nThis\nIs\nA\nNew\nLine';
+  const text = new Text()
+  label.content.push(text)
+  text.fontFamily = new FontFamily(FontFamilyName.D)
+  text.text = 'Hello\n World!\nThis\nIs\nA\nNew\nLine'
 
-  const zpl = label.generateZPL();
+  const zpl = label.generateZPL()
 
-  // @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'expect'.
   expect(zpl).toBe(`^XA
 ^FO10,10^AD,,,
 ^FB780,1,0,L,0
@@ -60,115 +50,77 @@ test('add multiline text to a label', () => {
 ^FO10,136^AD,,,
 ^FB780,1,0,L,0
 ^FDLine^FS
-^XZ`);
-});
+^XZ`)
+})
 
-// @ts-expect-error ts-migrate(2582) FIXME: Cannot find name 'test'. Do you need to install ty... Remove this comment to see the full error message
 test('add text with alignment to a label', () => {
-  const label = testHelpers.createLabel();
+  const label = testHelpers.createLabel()
 
-  const textTopLeft = new Text();
-  label.content.push(textTopLeft);
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'fontFamily' does not exist on type 'Text... Remove this comment to see the full error message
-  textTopLeft.fontFamily = new FontFamily(FontFamilyName.D);
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'verticalAlignment' does not exist on typ... Remove this comment to see the full error message
-  textTopLeft.verticalAlignment = new Alignment(AlignmentValue.Start);
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'horizontalAlignment' does not exist on t... Remove this comment to see the full error message
-  textTopLeft.horizontalAlignment = new Alignment(AlignmentValue.Start);
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'text' does not exist on type 'Text'.
-  textTopLeft.text = 'Top Left';
+  const textTopLeft = new Text()
+  label.content.push(textTopLeft)
+  textTopLeft.fontFamily = new FontFamily(FontFamilyName.D)
+  textTopLeft.verticalAlignment = new Alignment(AlignmentValue.Start)
+  textTopLeft.horizontalAlignment = new Alignment(AlignmentValue.Start)
+  textTopLeft.text = 'Top Left'
 
-  const textTopCenter = new Text();
-  label.content.push(textTopCenter);
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'fontFamily' does not exist on type 'Text... Remove this comment to see the full error message
-  textTopCenter.fontFamily = new FontFamily(FontFamilyName.D);
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'verticalAlignment' does not exist on typ... Remove this comment to see the full error message
-  textTopCenter.verticalAlignment = new Alignment(AlignmentValue.Start);
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'horizontalAlignment' does not exist on t... Remove this comment to see the full error message
-  textTopCenter.horizontalAlignment = new Alignment(AlignmentValue.Center);
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'text' does not exist on type 'Text'.
-  textTopCenter.text = 'Top Center';
+  const textTopCenter = new Text()
+  label.content.push(textTopCenter)
+  textTopCenter.fontFamily = new FontFamily(FontFamilyName.D)
+  textTopCenter.verticalAlignment = new Alignment(AlignmentValue.Start)
+  textTopCenter.horizontalAlignment = new Alignment(AlignmentValue.Center)
+  textTopCenter.text = 'Top Center'
 
-  const textTopRight = new Text();
-  label.content.push(textTopRight);
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'fontFamily' does not exist on type 'Text... Remove this comment to see the full error message
-  textTopRight.fontFamily = new FontFamily(FontFamilyName.D);
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'verticalAlignment' does not exist on typ... Remove this comment to see the full error message
-  textTopRight.verticalAlignment = new Alignment(AlignmentValue.Start);
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'horizontalAlignment' does not exist on t... Remove this comment to see the full error message
-  textTopRight.horizontalAlignment = new Alignment(AlignmentValue.End);
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'text' does not exist on type 'Text'.
-  textTopRight.text = 'Top Right';
+  const textTopRight = new Text()
+  label.content.push(textTopRight)
+  textTopRight.fontFamily = new FontFamily(FontFamilyName.D)
+  textTopRight.verticalAlignment = new Alignment(AlignmentValue.Start)
+  textTopRight.horizontalAlignment = new Alignment(AlignmentValue.End)
+  textTopRight.text = 'Top Right'
 
-  const textCenterLeft = new Text();
-  label.content.push(textCenterLeft);
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'fontFamily' does not exist on type 'Text... Remove this comment to see the full error message
-  textCenterLeft.fontFamily = new FontFamily(FontFamilyName.D);
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'verticalAlignment' does not exist on typ... Remove this comment to see the full error message
-  textCenterLeft.verticalAlignment = new Alignment(AlignmentValue.Center);
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'horizontalAlignment' does not exist on t... Remove this comment to see the full error message
-  textCenterLeft.horizontalAlignment = new Alignment(AlignmentValue.Start);
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'text' does not exist on type 'Text'.
-  textCenterLeft.text = 'Center Left';
+  const textCenterLeft = new Text()
+  label.content.push(textCenterLeft)
+  textCenterLeft.fontFamily = new FontFamily(FontFamilyName.D)
+  textCenterLeft.verticalAlignment = new Alignment(AlignmentValue.Center)
+  textCenterLeft.horizontalAlignment = new Alignment(AlignmentValue.Start)
+  textCenterLeft.text = 'Center Left'
 
-  const textCenterCenter = new Text();
-  label.content.push(textCenterCenter);
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'fontFamily' does not exist on type 'Text... Remove this comment to see the full error message
-  textCenterCenter.fontFamily = new FontFamily(FontFamilyName.D);
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'verticalAlignment' does not exist on typ... Remove this comment to see the full error message
-  textCenterCenter.verticalAlignment = new Alignment(AlignmentValue.Center);
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'horizontalAlignment' does not exist on t... Remove this comment to see the full error message
-  textCenterCenter.horizontalAlignment = new Alignment(AlignmentValue.Center);
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'text' does not exist on type 'Text'.
-  textCenterCenter.text = 'Center Center';
+  const textCenterCenter = new Text()
+  label.content.push(textCenterCenter)
+  textCenterCenter.fontFamily = new FontFamily(FontFamilyName.D)
+  textCenterCenter.verticalAlignment = new Alignment(AlignmentValue.Center)
+  textCenterCenter.horizontalAlignment = new Alignment(AlignmentValue.Center)
+  textCenterCenter.text = 'Center Center'
 
-  const textCenterRight = new Text();
-  label.content.push(textCenterRight);
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'fontFamily' does not exist on type 'Text... Remove this comment to see the full error message
-  textCenterRight.fontFamily = new FontFamily(FontFamilyName.D);
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'verticalAlignment' does not exist on typ... Remove this comment to see the full error message
-  textCenterRight.verticalAlignment = new Alignment(AlignmentValue.Center);
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'horizontalAlignment' does not exist on t... Remove this comment to see the full error message
-  textCenterRight.horizontalAlignment = new Alignment(AlignmentValue.End);
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'text' does not exist on type 'Text'.
-  textCenterRight.text = 'Center Right';
+  const textCenterRight = new Text()
+  label.content.push(textCenterRight)
+  textCenterRight.fontFamily = new FontFamily(FontFamilyName.D)
+  textCenterRight.verticalAlignment = new Alignment(AlignmentValue.Center)
+  textCenterRight.horizontalAlignment = new Alignment(AlignmentValue.End)
+  textCenterRight.text = 'Center Right'
 
-  const textBottomLeft = new Text();
-  label.content.push(textBottomLeft);
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'fontFamily' does not exist on type 'Text... Remove this comment to see the full error message
-  textBottomLeft.fontFamily = new FontFamily(FontFamilyName.D);
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'verticalAlignment' does not exist on typ... Remove this comment to see the full error message
-  textBottomLeft.verticalAlignment = new Alignment(AlignmentValue.End);
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'horizontalAlignment' does not exist on t... Remove this comment to see the full error message
-  textBottomLeft.horizontalAlignment = new Alignment(AlignmentValue.Start);
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'text' does not exist on type 'Text'.
-  textBottomLeft.text = 'Bottom Left';
+  const textBottomLeft = new Text()
+  label.content.push(textBottomLeft)
+  textBottomLeft.fontFamily = new FontFamily(FontFamilyName.D)
+  textBottomLeft.verticalAlignment = new Alignment(AlignmentValue.End)
+  textBottomLeft.horizontalAlignment = new Alignment(AlignmentValue.Start)
+  textBottomLeft.text = 'Bottom Left'
 
-  const textBottomCenter = new Text();
-  label.content.push(textBottomCenter);
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'fontFamily' does not exist on type 'Text... Remove this comment to see the full error message
-  textBottomCenter.fontFamily = new FontFamily(FontFamilyName.D);
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'verticalAlignment' does not exist on typ... Remove this comment to see the full error message
-  textBottomCenter.verticalAlignment = new Alignment(AlignmentValue.End);
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'horizontalAlignment' does not exist on t... Remove this comment to see the full error message
-  textBottomCenter.horizontalAlignment = new Alignment(AlignmentValue.Center);
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'text' does not exist on type 'Text'.
-  textBottomCenter.text = 'Bottom Center';
+  const textBottomCenter = new Text()
+  label.content.push(textBottomCenter)
+  textBottomCenter.fontFamily = new FontFamily(FontFamilyName.D)
+  textBottomCenter.verticalAlignment = new Alignment(AlignmentValue.End)
+  textBottomCenter.horizontalAlignment = new Alignment(AlignmentValue.Center)
+  textBottomCenter.text = 'Bottom Center'
 
-  const textBottomRight = new Text();
-  label.content.push(textBottomRight);
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'fontFamily' does not exist on type 'Text... Remove this comment to see the full error message
-  textBottomRight.fontFamily = new FontFamily(FontFamilyName.D);
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'verticalAlignment' does not exist on typ... Remove this comment to see the full error message
-  textBottomRight.verticalAlignment = new Alignment(AlignmentValue.End);
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'horizontalAlignment' does not exist on t... Remove this comment to see the full error message
-  textBottomRight.horizontalAlignment = new Alignment(AlignmentValue.End);
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'text' does not exist on type 'Text'.
-  textBottomRight.text = 'Bottom Right';
+  const textBottomRight = new Text()
+  label.content.push(textBottomRight)
+  textBottomRight.fontFamily = new FontFamily(FontFamilyName.D)
+  textBottomRight.verticalAlignment = new Alignment(AlignmentValue.End)
+  textBottomRight.horizontalAlignment = new Alignment(AlignmentValue.End)
+  textBottomRight.text = 'Bottom Right'
 
-  const zpl = label.generateZPL();
+  const zpl = label.generateZPL()
 
-  // @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'expect'.
   expect(zpl).toBe(`^XA
 ^FO10,10^AD,,,
 ^FB780,1,0,L,0
@@ -197,31 +149,25 @@ test('add text with alignment to a label', () => {
 ^FO10,138^AD,,,
 ^FB780,1,0,R,0
 ^FDBottom Right^FS
-^XZ`);
-});
+^XZ`)
+})
 
-// @ts-expect-error ts-migrate(2582) FIXME: Cannot find name 'test'. Do you need to install ty... Remove this comment to see the full error message
 test('add scaled text to a label', () => {
-  const label = testHelpers.createLabel();
+  const label = testHelpers.createLabel()
 
-  const text = new Text();
-  label.content.push(text);
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'fontFamily' does not exist on type 'Text... Remove this comment to see the full error message
-  text.fontFamily = new FontFamily(FontFamilyName.D);
+  const text = new Text()
+  label.content.push(text)
+  text.fontFamily = new FontFamily(FontFamilyName.D)
 
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'text' does not exist on type 'Text'.
-  text.text = 'Hello World!';
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'characterHeight' does not exist on type ... Remove this comment to see the full error message
-  text.characterHeight = 5;
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'characterWidth' does not exist on type '... Remove this comment to see the full error message
-  text.characterWidth = 30;
+  text.text = 'Hello World!'
+  text.characterHeight = 5
+  text.characterWidth = 30
 
-  const zpl = label.generateZPL();
+  const zpl = label.generateZPL()
 
-  // @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'expect'.
   expect(zpl).toBe(`^XA
 ^FO10,10^AD,5,30,
 ^FB780,1,0,L,0
 ^FDHello World!^FS
-^XZ`);
-});
+^XZ`)
+})
