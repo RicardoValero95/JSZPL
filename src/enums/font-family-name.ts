@@ -5,7 +5,7 @@ export const FontFamilyName = {
   D: 'D',
   E: 'E',
   F: 'F'
-  // G : 'G',
+  // G: 'G'
   // H : 'H',
   // 0 : '0',
   // GS : 'GS',

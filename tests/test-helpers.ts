@@ -1,5 +1,7 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Spacing'.
-const { Label, PrintDensity, PrintDensityName, Spacing } = require('../src/jszpl')
+import { Label } from '../src/components/label'
+import { PrintDensityName } from '../src/enums/print-density-name'
+import { PrintDensity } from '../src/properties/print-density'
+import { Spacing } from '../src/properties/spacing'
 
 export = {
   createLabel: () => {

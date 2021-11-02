@@ -1,4 +1,7 @@
-import { Barcode, BarcodeType, BarcodeTypeName, Spacing } from '../src/jszpl'
+import { Barcode } from '../src/components/barcode'
+import { BarcodeTypeName } from '../src/enums/barcode-type-name'
+import { BarcodeType } from '../src/properties/barcode-type'
+import { Spacing } from '../src/properties/spacing'
 import testHelpers from './test-helpers'
 
 test('add QR barcode to a label', () => {

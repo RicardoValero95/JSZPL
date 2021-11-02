@@ -8,8 +8,8 @@ export class BaseComponent {
     offsetTop: number,
     availableWidth: number,
     availableHeight: number,
-    widthUnits: any,
-    heightUnits: any
+    widthUnits?: any,
+    heightUnits?: any
   ) {
     return ''
   }
@@ -18,11 +18,11 @@ export class BaseComponent {
   }
   generateBinaryImage(
     binaryBase: any,
-    offsetLeft: any,
-    offsetTop: any,
-    availableWidth: any,
-    availableHeight: any,
-    widthUnits: any,
-    heightUnits: any
+    offsetLeft: number,
+    offsetTop: number,
+    availableWidth: number,
+    availableHeight: number,
+    widthUnits?: any,
+    heightUnits?: any
   ) {}
 }

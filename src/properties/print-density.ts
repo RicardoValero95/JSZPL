@@ -1,4 +1,4 @@
-export = class PrintDensity {
+export class PrintDensity {
   typeName: any
   value: any
   constructor(value: any) {

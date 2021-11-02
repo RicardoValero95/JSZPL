@@ -1,9 +1,12 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Text'.
-const { Grid, Text, Size, Spacing, FontFamily, FontFamilyName, SizeType } = require('../src/jszpl')
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'testHelper... Remove this comment to see the full error message
-const testHelpers = require('./test-helpers')
+import { Grid } from '../src/components/grid'
+import { Text } from '../src/components/text'
+import { FontFamilyName } from '../src/enums/font-family-name'
+import { SizeType } from '../src/enums/size-type'
+import { FontFamily } from '../src/properties/font-family'
+import { Size } from '../src/properties/size'
+import { Spacing } from '../src/properties/spacing'
+import testHelpers from './test-helpers'
 
-// @ts-expect-error ts-migrate(2582) FIXME: Cannot find name 'test'. Do you need to install ty... Remove this comment to see the full error message
 test('add grid to a label', () => {
   const label = testHelpers.createLabel()
 
@@ -20,43 +23,30 @@ test('add grid to a label', () => {
 
   const text00 = new Text()
   grid.content.push(text00)
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'text' does not exist on type 'Text'.
   text00.text = '(0, 0)'
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'fontFamily' does not exist on type 'Text... Remove this comment to see the full error message
   text00.fontFamily = new FontFamily(FontFamilyName.D)
 
   const text10 = new Text()
   grid.content.push(text10)
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'text' does not exist on type 'Text'.
   text10.text = '(1, 0)'
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'fontFamily' does not exist on type 'Text... Remove this comment to see the full error message
   text10.fontFamily = new FontFamily(FontFamilyName.D)
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'grid' does not exist on type 'Text'.
   text10.grid.column = 1
 
   const text01 = new Text()
   grid.content.push(text01)
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'text' does not exist on type 'Text'.
   text01.text = '(0, 1)'
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'fontFamily' does not exist on type 'Text... Remove this comment to see the full error message
   text01.fontFamily = new FontFamily(FontFamilyName.D)
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'grid' does not exist on type 'Text'.
   text01.grid.row = 1
 
   const text11 = new Text()
   grid.content.push(text11)
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'text' does not exist on type 'Text'.
   text11.text = '(1, 1)'
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'fontFamily' does not exist on type 'Text... Remove this comment to see the full error message
   text11.fontFamily = new FontFamily(FontFamilyName.D)
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'grid' does not exist on type 'Text'.
   text11.grid.column = 1
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'grid' does not exist on type 'Text'.
   text11.grid.row = 1
 
   const zpl = label.generateZPL()
 
-  // @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'expect'.
   expect(zpl).toBe(`^XA
 ^FO10,10^GB780,380,2,,0^FS
 ^FO14,14^GB381,181,2,,0^FS

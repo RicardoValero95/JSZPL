@@ -10,7 +10,7 @@ const elements = {
   Barcode: require('./components/barcode'),
   Raw: require('./components/raw')
 }
-module.exports = {
+export default {
   SizeType: require('./enums/size-type'),
   Rotation: require('./enums/rotation'),
   PrintDensityName: require('./enums/print-density-name'),

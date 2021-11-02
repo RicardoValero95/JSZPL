@@ -1,4 +1,4 @@
-export = class Alignment {
+export class Alignment {
   typeName: any
   value: any
   constructor(value: any) {

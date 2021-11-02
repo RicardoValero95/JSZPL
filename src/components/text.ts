@@ -1,9 +1,18 @@
-import BaseVisualComponent from './base-visual-component'
-import FontFamily from '../properties/font-family'
-import Alignment from '../properties/alignment'
+import { BaseVisualComponent } from './base-visual-component'
+import { FontFamily } from '../properties/font-family'
+import { Alignment } from '../properties/alignment'
 import { FontFamilyName } from '../enums/font-family-name'
 import { AlignmentValue } from '../enums/alignment-value'
-export = class Text extends BaseVisualComponent {
+export class Text extends BaseVisualComponent {
+  typeName: string
+  text: string
+  fontFamily: FontFamily
+  lineSpacing: number
+  // rotation
+  verticalAlignment: Alignment
+  horizontalAlignment: Alignment
+  characterWidth: number
+  characterHeight: number
   constructor() {
     super()
     this.typeName = 'Text'
@@ -21,7 +30,7 @@ export = class Text extends BaseVisualComponent {
     return this.text.replace(expression, '\n').split('\n')
   }
   characterMap() {
-    const lineCharacters = []
+    const lineCharacters: any = []
     const charset = this.fontFamily.definition.characters
     const textLines = this.getTextLines()
     for (let textLine of textLines) {
@@ -56,10 +65,10 @@ export = class Text extends BaseVisualComponent {
     }
   }
   generateZPL(
-    offsetLeft: any,
-    offsetTop: any,
-    availableWidth: any,
-    availableHeight: any,
+    offsetLeft: number,
+    offsetTop: number,
+    availableWidth: number,
+    availableHeight: number,
     widthUnits: any,
     heightUnits: any
   ) {
@@ -110,19 +119,19 @@ export = class Text extends BaseVisualComponent {
   }
   generateBinaryImage(
     binaryBase: any,
-    offsetLeft: any,
-    offsetTop: any,
-    availableWidth: any,
-    availableHeight: any,
+    offsetLeft: number,
+    offsetTop: number,
+    availableWidth: number,
+    availableHeight: number,
     widthUnits: any,
     heightUnits: any
   ) {
     const position = this.getPosition(offsetLeft, offsetTop, availableWidth, availableHeight, widthUnits, heightUnits)
     const characters = this.characterMap()
     const size = this.calculateSize()
-    if (this.horizontalAlignment == AlignmentValue.End) {
+    if (this.horizontalAlignment.value == AlignmentValue.End) {
       position.left = position.left + position.width - size.width
-    } else if (this.horizontalAlignment == AlignmentValue.Center) {
+    } else if (this.horizontalAlignment.value == AlignmentValue.Center) {
       position.left = position.left + (position.width - size.width) / 2
     }
     if (this.verticalAlignment.value == AlignmentValue.End) {

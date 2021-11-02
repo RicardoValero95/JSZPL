@@ -19,7 +19,7 @@ function encode(blocks: any) {
   return base64
 }
 function decode(base64: any) {
-  var blocks = []
+  var blocks: number[] = []
   base64 = base64.replace(/=/g, '')
   for (var i = 0; i < base64.length; i++) {
     var index = base64chars.indexOf(base64[i])
@@ -31,7 +31,7 @@ function decode(base64: any) {
   }
   return blocks
 }
-export = {
-  encode: encode,
-  decode: decode
+export default {
+  encode,
+  decode
 }

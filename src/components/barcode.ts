@@ -1,8 +1,8 @@
 import { BaseVisualComponent } from './base-visual-component'
 import { BarcodeType } from '../properties/barcode-type'
 import { BarcodeTypeName } from '../enums/barcode-type-name'
-import LabelTools from '../helpers/label-tools'
-export = class Barcode extends BaseVisualComponent {
+import { BarcodeRenderer } from '../helpers/barcode-renderer'
+export class Barcode extends BaseVisualComponent {
   typeName: string
   data: string
   dataPrepend: string
@@ -16,33 +16,33 @@ export = class Barcode extends BaseVisualComponent {
     this.data = ''
     this.dataPrepend = ''
     this.maxLength = 32
-    this.type = new BarcodeType(BarcodeTypeName.CODE_11)
+    this.type = new BarcodeType(BarcodeTypeName.Code11)
     this.subset = ''
     this.interpretationLine = true
     this.notImplemented = ['typeName', 'invert']
   }
   generateZPL(
-    offsetLeft: any,
-    offsetTop: any,
-    availableWidth: any,
-    availableHeight: any,
+    offsetLeft: number,
+    offsetTop: number,
+    availableWidth: number,
+    availableHeight: number,
     widthUnits: any,
     heightUnits: any
   ) {
     var position = this.getPosition(offsetLeft, offsetTop, availableWidth, availableHeight, widthUnits, heightUnits)
     var zpl = ''
-    switch (this.type.value) {
-      case BarcodeTypeName.Code49:
-        zpl += '^FO' + Math.round(position.left) + ',' + Math.round(position.top + 25)
-        break
-      default:
-        zpl += '^FO' + Math.round(position.left) + ',' + Math.round(position.top)
-        break
-    }
+    // TODO: What is this
+    // switch (this.type.value) {
+    //   case BarcodeTypeName.Code49:
+    //     zpl += '^FO' + Math.round(position.left) + ',' + Math.round(position.top + 25)
+    //     break
+    //   default:
+    //     zpl += '^FO' + Math.round(position.left) + ',' + Math.round(position.top)
+    //     break
+    // }
     if (this.invert) {
       zpl += '^FR'
     }
-    let rows = undefined
     switch (this.type.value) {
       case BarcodeTypeName.Code11:
         zpl += '^B1N,N,' + position.height + ',' + (this.interpretationLine ? 'Y' : 'N') + ',N'
@@ -58,7 +58,7 @@ export = class Barcode extends BaseVisualComponent {
         break
       case BarcodeTypeName.PDF417:
         var rowHeight = 10
-        rows = Math.ceil(position.height / rowHeight)
+        let rows = Math.ceil(position.height / rowHeight)
         var bytes = this.maxLength * rows
         var columns = Math.ceil(bytes / rows)
         zpl += '^B7N,' + rowHeight + ',0,' + columns + ',' + rows + ',N'
@@ -129,15 +129,17 @@ export = class Barcode extends BaseVisualComponent {
   }
   generateBinaryImage(
     binaryBase: any,
-    offsetLeft: any,
-    offsetTop: any,
-    availableWidth: any,
-    availableHeight: any,
+    offsetLeft: number,
+    offsetTop: number,
+    availableWidth: number,
+    availableHeight: number,
     widthUnits: any,
     heightUnits: any
   ) {
     var position = this.getPosition(offsetLeft, offsetTop, availableWidth, availableHeight, widthUnits, heightUnits)
-    var barcodeData = LabelTools.BarcodeRenderer.render(position.width, position.height, this.type, this.data)
+    // TODO: how to use barcode renderer
+    var renderer = new BarcodeRenderer()
+    var barcodeData = renderer.render(position.width, position.height, this.type, this.data)
     for (var y = 0; y < position.height; y++) {
       for (var x = 0; x < position.width; x++) {
         var yIndex = y + position.top

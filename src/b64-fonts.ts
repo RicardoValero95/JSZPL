@@ -1,26 +1,24 @@
 import base64 from './base64'
-function initialize() {
-  for (var f_id in self) {
-    var character = self[f_id]
-    if (character.spacing == undefined) {
-      continue
-    }
-    character.characters = {}
-    for (let c_id in character.base64) {
-      const blocks = base64.decode(character.base64[c_id])
-      character.characters[c_id] = []
-      for (let y = 0; y < character.size.height; y++) {
-        character.characters[c_id][y] = []
-        for (let x = 0; x < character.size.width; x++) {
-          const index = y * character.size.width + x
-          character.characters[c_id][y].push(blocks[index])
-        }
-      }
-    }
+import { Base64Char } from './enums/base64-char'
+import { FontFamilyName } from './enums/font-family-name'
+
+type FontFamilyDefinition = {
+  name: string
+  spacing: {
+    right: number
+    left: number
+    top: number
+    bottom: number
   }
+  size: {
+    width: number
+    height: number
+  }
+  base64: { [char in Base64Char]: string }
 }
-const self = (export = {
-  initialize: initialize,
+
+export const definitions: { [name in FontFamilyName]: FontFamilyDefinition } = {
+  // initialize: initialize,
   A: {
     name: 'FONT_A',
     spacing: {
@@ -536,4 +534,31 @@ const self = (export = {
       '"': 'AAAAAOOA44DjgOOA44DjgOOA44AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA='
     }
   }
-})
+}
+
+type FFDwithCharacters = FontFamilyDefinition & {
+  characters: any
+}
+function initialize() {
+  for (let fontId in definitions) {
+    let character = definitions[fontId] as FFDwithCharacters
+    if (character.spacing == undefined) {
+      continue
+    }
+    for (const characterId in character.base64) {
+      const blocks = base64.decode(character.base64[characterId])
+      character.characters[characterId] = []
+      for (let y = 0; y < character.size.height; y++) {
+        character.characters[characterId][y] = []
+        for (let x = 0; x < character.size.width; x++) {
+          const index = y * character.size.width + x
+          character.characters[characterId][y].push(blocks[index])
+        }
+      }
+    }
+  }
+}
+
+// [map function for objects (instead of arrays)](https://stackoverflow.com/questions/14810506/map-function-for-objects-instead-of-arrays)
+const objectMap = (obj: Object, fn: Function) =>
+  Object.fromEntries(Object.entries(obj).map(([k, v], i) => [k, fn(v, k, i)]))

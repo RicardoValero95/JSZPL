@@ -1,6 +1,11 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'BaseVisual... Remove this comment to see the full error message
-const BaseVisualComponent = require('./base-visual-component')
-export = class Line extends BaseVisualComponent {
+import { BaseVisualComponent } from './base-visual-component'
+export class Line extends BaseVisualComponent {
+  typeName: string
+  x1: number
+  y1: number
+  x2: number
+  y2: number
+  thickness: number
   constructor() {
     super()
     this.typeName = 'Line'
@@ -11,10 +16,10 @@ export = class Line extends BaseVisualComponent {
     this.thickness = 1
   }
   generateZPL(
-    offsetLeft: any,
-    offsetTop: any,
-    availableWidth: any,
-    availableHeight: any,
+    offsetLeft: number,
+    offsetTop: number,
+    availableWidth: number,
+    availableHeight: number,
     widthUnits: any,
     heightUnits: any
   ) {
@@ -42,10 +47,10 @@ export = class Line extends BaseVisualComponent {
   }
   generateBinaryImage(
     binaryBase: any,
-    offsetLeft: any,
-    offsetTop: any,
-    availableWidth: any,
-    availableHeight: any,
+    offsetLeft: number,
+    offsetTop: number,
+    availableWidth: number,
+    availableHeight: number,
     widthUnits: any,
     heightUnits: any
   ) {

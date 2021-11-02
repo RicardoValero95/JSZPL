@@ -1,5 +1,5 @@
-import BaseContainerControl from './base-container-component'
-export = class BaseGraphicComponent extends BaseContainerControl {
+import { BaseContainerComponent } from './base-container-component'
+export = class BaseGraphicComponent extends BaseContainerComponent {
   border: number
   fill: boolean
   constructor() {

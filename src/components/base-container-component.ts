@@ -1,6 +1,6 @@
 import { BaseVisualComponent } from './base-visual-component'
 import { Spacing } from '../properties/spacing'
-export = class BaseContainerComponent extends BaseVisualComponent {
+export class BaseContainerComponent extends BaseVisualComponent {
   padding: Spacing
   content: any[]
   constructor() {
@@ -8,18 +8,16 @@ export = class BaseContainerComponent extends BaseVisualComponent {
     this.padding = new Spacing()
     this.content = []
   }
-  calculateSizing(availableWidth: any, availableHeight: any, widthUnits: any, heightUnits: any) {
-    var units = this.calculateUnits()
-    var spacingLeft = this.margin.left + this.padding.left
-    var spacingTop = this.margin.top + this.padding.top
-    var spacingHorizontal = spacingLeft + this.margin.right + this.padding.right
-    var spacingVertical = spacingTop + this.margin.bottom + this.padding.right
-    var width = availableWidth - spacingHorizontal - (this.border || 0) * 2
-    var height = availableHeight - spacingVertical - (this.border || 0) * 2
-    // @ts-expect-error ts-migrate(2403) FIXME: Subsequent variable declarations must have the sam... Remove this comment to see the full error message
-    var widthUnits = (width - units.absolute.width) / (units.relative.width || 1)
-    // @ts-expect-error ts-migrate(2403) FIXME: Subsequent variable declarations must have the sam... Remove this comment to see the full error message
-    var heightUnits = (height - units.absolute.height) / (units.relative.height || 1)
+  calculateSizing(availableWidth: number, availableHeight: number, widthUnits: any, heightUnits: any) {
+    let units = this.calculateUnits()
+    let spacingLeft = this.margin.left + this.padding.left
+    let spacingTop = this.margin.top + this.padding.top
+    let spacingHorizontal = spacingLeft + this.margin.right + this.padding.right
+    let spacingVertical = spacingTop + this.margin.bottom + this.padding.right
+    let width = availableWidth - spacingHorizontal - (this.border || 0) * 2
+    let height = availableHeight - spacingVertical - (this.border || 0) * 2
+    widthUnits = (width - units.absolute.width) / (units.relative.width || 1)
+    heightUnits = (height - units.absolute.height) / (units.relative.height || 1)
     return {
       spacingTop: spacingTop,
       spacingLeft: spacingLeft,
@@ -30,12 +28,12 @@ export = class BaseContainerComponent extends BaseVisualComponent {
     }
   }
   generateZPL(
-    offsetLeft: any,
-    offsetTop: any,
-    availableWidth: any,
-    availableHeight: any,
-    widthUnits: any,
-    heightUnits: any
+    offsetLeft: number,
+    offsetTop: number,
+    availableWidth: number,
+    availableHeight: number,
+    widthUnits?: any,
+    heightUnits?: any
   ) {
     var sizing = this.calculateSizing(availableWidth, availableHeight, widthUnits, heightUnits)
     var zpl = ''
@@ -53,10 +51,10 @@ export = class BaseContainerComponent extends BaseVisualComponent {
   }
   generateBinaryImage(
     binaryBase: any,
-    offsetLeft: any,
-    offsetTop: any,
-    availableWidth: any,
-    availableHeight: any,
+    offsetLeft: number,
+    offsetTop: number,
+    availableWidth: number,
+    availableHeight: number,
     widthUnits?: any,
     heightUnits?: any
   ) {

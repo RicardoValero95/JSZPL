@@ -1,8 +1,9 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'BaseContai... Remove this comment to see the full error message
-const BaseContainerComponent = require('./base-container-component')
-const PrintDensity = require('../properties/print-density')
-const PrintDensityName = require('../enums/print-density-name')
-export = class Label extends BaseContainerComponent {
+import { BaseContainerComponent } from './base-container-component'
+import { PrintDensity } from '../properties/print-density'
+import { PrintDensityName } from '../enums/print-density-name'
+export class Label extends BaseContainerComponent {
+  typeName: string
+  printDensity: PrintDensity
   constructor() {
     super()
     this.typeName = 'Label'

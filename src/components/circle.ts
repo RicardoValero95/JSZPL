@@ -6,10 +6,10 @@ export = class Circle extends BaseGraphicComponent {
     this.typeName = 'Circle'
   }
   generateZPL(
-    offsetLeft: any,
-    offsetTop: any,
-    availableWidth: any,
-    availableHeight: any,
+    offsetLeft: number,
+    offsetTop: number,
+    availableWidth: number,
+    availableHeight: number,
     widthUnits: any,
     heightUnits: any
   ) {

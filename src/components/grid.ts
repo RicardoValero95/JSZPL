@@ -1,14 +1,14 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'BaseContai... Remove this comment to see the full error message
-const BaseContainerComponent = require('./base-container-component')
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Box'.
-const Box = require('./box')
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Size'.
-const Size = require('../properties/size')
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Spacing'.
-const Spacing = require('../properties/spacing')
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'SizeType'.
-const SizeType = require('../enums/size-type')
-export = class Grid extends BaseContainerComponent {
+import { BaseContainerComponent } from './base-container-component'
+import { Box } from './box'
+import { Size } from '../properties/size'
+import { Spacing } from '../properties/spacing'
+import { SizeType } from '../enums/size-type'
+export class Grid extends BaseContainerComponent {
+  typeName: string
+  columns: any[]
+  rows: any[]
+  columnSpacing: number
+  rowSpacing: number
   constructor() {
     super()
     this.typeName = 'Grid'
@@ -86,8 +86,8 @@ export = class Grid extends BaseContainerComponent {
     const absoluteHeight = availableHeight - borderSpacing - this.rowSpacing * (rowDefinitions.length + 1)
     const widthUnits = (absoluteWidth - units.absolute.width) / (units.relative.width || 1)
     const heightUnits = (absoluteHeight - units.absolute.height) / (units.relative.height || 1)
-    const content = []
-    const contentCells = []
+    const content = [] as any[]
+    const contentCells = [] as any[]
     let top = this.rowSpacing
     let unusedHeight = absoluteHeight + (this.border || 0) * 2
     for (let y = 0; y < rowDefinitions.length; y++) {
@@ -101,7 +101,6 @@ export = class Grid extends BaseContainerComponent {
       unusedHeight -= height
       for (let x = 0; x < this.columns.length; x++) {
         const cell = new Box()
-        // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'any' is not assignable to parame... Remove this comment to see the full error message
         content[y].push(cell)
         contentCells.push(cell)
         let width = Math.ceil(this.getSize(columnDefinitions[x], widthUnits)) + (this.border || 0)
@@ -111,8 +110,8 @@ export = class Grid extends BaseContainerComponent {
         unusedWidth -= width
         cell.width = width
         cell.height = height
-        cell.top = top
-        cell.left = left
+        cell.top.value = top
+        cell.left.value = left
         cell.border = this.border
         cell.padding = this.padding
         left += width + this.columnSpacing
@@ -123,7 +122,6 @@ export = class Grid extends BaseContainerComponent {
       if (!element.grid) continue
       if (element.grid.row < 0 || element.grid.row >= rowDefinitions.length) continue
       if (element.grid.column < 0 || element.grid.column >= columnDefinitions.length) continue
-      // @ts-expect-error ts-migrate(2339) FIXME: Property 'content' does not exist on type 'never'.
       content[element.grid.row][element.grid.column].content.push(element)
     }
     const contentBox = new Box()
@@ -137,10 +135,10 @@ export = class Grid extends BaseContainerComponent {
     return contentBox
   }
   generateZPL(
-    offsetLeft: any,
-    offsetTop: any,
-    availableWidth: any,
-    availableHeight: any,
+    offsetLeft: number,
+    offsetTop: number,
+    availableWidth: number,
+    availableHeight: number,
     widthUnits: any,
     heightUnits: any
   ) {

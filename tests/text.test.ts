@@ -1,4 +1,8 @@
-import { Text, FontFamilyName, FontFamily, Alignment, AlignmentValue } from '../src/jszpl'
+import { Text } from '../src/components/text'
+import { AlignmentValue } from '../src/enums/alignment-value'
+import { FontFamilyName } from '../src/enums/font-family-name'
+import { Alignment } from '../src/properties/alignment'
+import { FontFamily } from '../src/properties/font-family'
 import testHelpers from './test-helpers'
 
 test('add text to a label', () => {

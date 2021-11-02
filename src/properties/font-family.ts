@@ -1,7 +1,8 @@
-import FontFamilyDefinition from '../b64-fonts'
-export = class FontFamily {
-  typeName: any
-  value: any
+import { FontFamilyDefinition } from '../b64-fonts'
+import { FontFamilyName } from '../enums/font-family-name'
+export class FontFamily {
+  typeName: string
+  value: FontFamilyName
   constructor(value: any) {
     this.typeName = 'FontFamily'
     this.value = value

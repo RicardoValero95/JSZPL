@@ -7,11 +7,13 @@ export class BaseVisualComponent extends BaseComponent {
   invert: boolean
   fixed: boolean
   grid: GridPosition
-  width: Size
-  height: Size
+  width: Size | number
+  height: Size | number
   top: Size
   left: Size
   margin: Spacing
+  border: number
+  content: any[]
   constructor() {
     super()
     this.invert = false
@@ -22,12 +24,14 @@ export class BaseVisualComponent extends BaseComponent {
     this.top = new Size()
     this.left = new Size()
     this.margin = new Spacing()
+    this.border = 0
+    this.content = []
   }
   getPosition(
-    offsetLeft: any,
-    offsetTop: any,
-    availableWidth: any,
-    availableHeight: any,
+    offsetLeft: number,
+    offsetTop: number,
+    availableWidth: number,
+    availableHeight: number,
     widthUnits: any,
     heightUnits: any
   ) {
@@ -49,7 +53,7 @@ export class BaseVisualComponent extends BaseComponent {
       height: Math.round(height)
     }
   }
-  getSize(prop: any, unitSize: any) {
+  getSize(prop: any, unitSize?: any) {
     if (typeof prop == 'number') {
       return prop
     } else {

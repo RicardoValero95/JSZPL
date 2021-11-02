@@ -1,5 +1,5 @@
 import BaseGraphicComponent from './base-graphic-component'
-export = class Box extends BaseGraphicComponent {
+export class Box extends BaseGraphicComponent {
   typeName: string
   cornerRadius: number
   constructor() {
@@ -8,10 +8,10 @@ export = class Box extends BaseGraphicComponent {
     this.cornerRadius = 0
   }
   generateZPL(
-    offsetLeft: any,
-    offsetTop: any,
-    availableWidth: any,
-    availableHeight: any,
+    offsetLeft: number,
+    offsetTop: number,
+    availableWidth: number,
+    availableHeight: number,
     widthUnits: any,
     heightUnits: any
   ) {
@@ -56,38 +56,40 @@ export = class Box extends BaseGraphicComponent {
           var xIndex = x + position.left
           var yIndex = y + position.top
           if (yIndex < 0 || xIndex < 0 || yIndex >= binaryBase.length || xIndex >= binaryBase[yIndex].length) continue
-          var center: { x: number; y: number } = {}
-          if (this.cornerRadius > 0) {
-            if (y < yTop) {
-              if (x < xLeft) {
-                // top left
-                center = {
-                  x: xLeft,
-                  y: yTop
+          const getCenter = () => {
+            if (this.cornerRadius > 0) {
+              if (y < yTop) {
+                if (x < xLeft) {
+                  // top left
+                  return {
+                    x: xLeft,
+                    y: yTop
+                  }
+                } else if (x > xRight) {
+                  // top right
+                  return {
+                    x: xRight,
+                    y: yTop
+                  }
                 }
-              } else if (x > xRight) {
-                // top right
-                center = {
-                  x: xRight,
-                  y: yTop
-                }
-              }
-            } else if (y > yBottom) {
-              if (x < xLeft) {
-                // bottom left
-                center = {
-                  x: xLeft,
-                  y: yBottom
-                }
-              } else if (x > xRight) {
-                // bottom right
-                center = {
-                  x: xRight,
-                  y: yBottom
+              } else if (y > yBottom) {
+                if (x < xLeft) {
+                  // bottom left
+                  return {
+                    x: xLeft,
+                    y: yBottom
+                  }
+                } else if (x > xRight) {
+                  // bottom right
+                  return {
+                    x: xRight,
+                    y: yBottom
+                  }
                 }
               }
             }
           }
+          const center = getCenter()
           if (center != undefined) {
             var distance = Math.sqrt(Math.pow(y - center.y, 2) + Math.pow(x - center.x, 2))
             if (distance <= this.cornerRadius + 1) {

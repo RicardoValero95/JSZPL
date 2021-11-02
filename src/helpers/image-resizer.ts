@@ -1,7 +1,7 @@
 export class ImageResizer {
   constructor() {}
-  resize(targetWidth: any, targetHeight: any, width: any, height: any, data: any) {
-    var result = []
+  resize(targetWidth: number, targetHeight: number, width: number, height: number, data: any) {
+    var result: number[] = []
     var dx = width / targetWidth
     var dy = height / targetHeight
     for (var y = 0; y < targetHeight; y++) {

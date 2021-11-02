@@ -1,6 +1,6 @@
 import { BaseVisualComponent } from './base-visual-component'
 import { GraphicData } from '../properties/graphic-data'
-import Box from './box'
+import { Box } from './box'
 import LabelTools from '../helpers/label-tools'
 import ZPLImageTools from '../helpers/zpl-image-tools'
 import { ImageProcessor } from '../helpers/image-processor'
@@ -28,10 +28,10 @@ export class Graphic extends BaseVisualComponent {
     cb(imageData)
   }
   generateZPL(
-    offsetLeft: any,
-    offsetTop: any,
-    availableWidth: any,
-    availableHeight: any,
+    offsetLeft: number,
+    offsetTop: number,
+    availableWidth: number,
+    availableHeight: number,
     widthUnits: any,
     heightUnits: any
   ) {
@@ -58,10 +58,10 @@ export class Graphic extends BaseVisualComponent {
   }
   generateBinaryImage(
     binaryBase: any,
-    offsetLeft: any,
-    offsetTop: any,
-    availableWidth: any,
-    availableHeight: any,
+    offsetLeft: number,
+    offsetTop: number,
+    availableWidth: number,
+    availableHeight: number,
     widthUnits: any,
     heightUnits: any
   ) {
